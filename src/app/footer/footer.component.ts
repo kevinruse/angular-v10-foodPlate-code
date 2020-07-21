@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  versionString: string = '1.0.0';
+  versionNumber: number = this.versionStringToNumber(this.versionString);
+
+  private versionStringToNumber(version: string): number {
+    return Number(parseFloat(version).toFixed(2));
+  }
+
   constructor() { }
 
   ngOnInit(): void {
