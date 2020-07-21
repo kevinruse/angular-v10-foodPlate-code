@@ -17,6 +17,10 @@ export class FooterComponent implements OnInit {
     return Number(parseFloat(version).toFixed(2));
   }
 
+  moreInfo() {
+    alert('For more information about the Food Plate, visit https://www.choosemyplate.gov/');
+  }
+
   constructor() { }
 
   ngOnInit(): void {
