@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../models/User';
 
 @Component({
-  selector: 'fp-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'fp-home-btn',
+  templateUrl: './home-btn.component.html',
+  styleUrls: ['./home-btn.component.css']
 })
-export class MainComponent implements OnInit {
+export class HomeBtnComponent implements OnInit {
 
   @Input()
   user: User;
