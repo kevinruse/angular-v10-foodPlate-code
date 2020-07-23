@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   title: string = 'Welcome to FoodPlate!';
+  message: string = 'Welcome to your Food Plate';
+
+  getMessageString() {
+    return this.message;
+  }
+
 
   constructor() { }
 
