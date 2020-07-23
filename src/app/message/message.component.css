@@ -9,3 +9,6 @@ p {
     text-align: center;
     font-size: .85em;
 }
+input:focus {
+    background-color: lightblue;
+}
