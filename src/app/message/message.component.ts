@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../models/User';
 
 @Component({
   selector: 'fp-message',
   templateUrl: './message.component.html',
-  styleUrls: ['./message.component.css']
+  styleUrls: ['./message.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MessageComponent implements OnInit, AfterViewInit {
 
