@@ -1,5 +1,8 @@
 <section>
-    <p>message is working</p>
-    <label for="firstnameElement">First Name:</label>
-    <input type="text" id="firstnameElement" #firstnameElement>
+    <!-- <label for="firstnameElement">First Name:</label>
+    <input type="text" id="firstnameElement" #firstnameElement>-->
+    <p *ngIf="user.reqsStatus.fruitMet === false && user.reqsStatus.grainMet === false && user.reqsStatus.proteinMet === false && user.reqsStatus.vegMet === false">You have not met any requirements. </p>
+    <!-- <p *ngIf="user.reqsStatus.fruitMet === true && user.reqsStatus.proteinMet === true">You have eaten all your fruit and protein for today!</p>-->
+    <p *ngIf="getFoodGroupsMet()">You have eaten all your {{ groupsMet }}</p>
 </section>
+
