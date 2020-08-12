@@ -14,6 +14,8 @@ import { PlateComponent } from './plate/plate.component';
 import { NavComponent } from './nav/nav.component';
 import { DefaultComponent } from './components/default/default.component';
 import { RegisterComponent } from './register/register.component';
+import { FarmersMarketsComponent } from './farmers-markets/farmers-markets.component';
+import { ExercisesComponent } from './exercises/exercises.component';
 
 @NgModule({
   declarations: [ AppComponent,
@@ -25,7 +27,9 @@ import { RegisterComponent } from './register/register.component';
                   MessageComponent,
                   NavComponent,
                   PlateComponent,
-                  RegisterComponent
+                  RegisterComponent,
+                  FarmersMarketsComponent,
+                  ExercisesComponent
                   ],
   imports: [
       AppRoutingModule,
