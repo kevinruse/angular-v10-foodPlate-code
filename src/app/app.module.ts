@@ -10,6 +10,7 @@ import { HomeBtnComponent } from './home-btn/home-btn.component';
 import { MainComponent } from './main/main.component';
 import { MessageComponent } from './message/message.component';
 import { PlateComponent } from './plate/plate.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [ AppComponent,
@@ -19,6 +20,7 @@ import { PlateComponent } from './plate/plate.component';
                   MainComponent,
                   MessageComponent,
                   PlateComponent,
+                  NavComponent,
                   ],
   imports: [
     BrowserModule,
