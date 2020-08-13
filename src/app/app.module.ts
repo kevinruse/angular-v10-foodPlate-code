@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -35,7 +36,9 @@ import { ExercisesComponent } from './exercises/exercises.component';
       AppRoutingModule,
       BrowserModule,
       CommonModule,
-      FoodGroupsModule
+      FoodGroupsModule,
+      FormsModule,
+      ReactiveFormsModule
   ],
   bootstrap: [ AppComponent ]
 })
