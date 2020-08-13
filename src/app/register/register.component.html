@@ -28,9 +28,8 @@
     <p *ngIf="!regForm.controls['ageGroup'].valid && regForm.controls['ageGroup'].touched" class="formMessage">Please enter your age group.</p>
     <input type="submit" tabindex="7"
            id="register-user"
-           [value]="regForm.valid ? 'Register' : 'You have not completed the form.'"
-           class="fpButton box-extra"
-           [disabled]="!regForm.valid">
+           value="Register"
+           class="fpButton box-extra">
 
 </form>
 
