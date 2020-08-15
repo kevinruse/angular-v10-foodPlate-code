@@ -13,8 +13,8 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent  implements OnInit, AfterViewInit {
   @ViewChild('fpHeader') headerComponent: HeaderComponent;
-  @Input()
-  user: User;
+
+  currentUser: User;
 
   constructor(private userService: UserService,
               private titleService: Title) {
@@ -22,7 +22,9 @@ export class AppComponent  implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Welcome to FoodPlate!');
-    this.user = this.userService.getUser();
+    this.userService.getUser();
+    this.userService.currentUser.subscribe(user => this.currentUser = user);
+
   }
 
   ngAfterViewInit(): void {
