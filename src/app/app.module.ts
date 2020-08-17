@@ -19,10 +19,14 @@ import { RegisterComponent } from './register/register.component';
 import { FarmersMarketsComponent } from './farmers-markets/farmers-markets.component';
 import { ExercisesComponent } from './exercises/exercises.component';
 import { TodaysGoalComponent } from './todays-goal/todays-goal.component';
+import { FoodComponent } from './food/food.component';
 
 @NgModule({
   declarations: [ AppComponent,
                   DefaultComponent,
+                  ExercisesComponent,
+                  FarmersMarketsComponent,
+                  FoodComponent,
                   FooterComponent,
                   HeaderComponent,
                   HomeBtnComponent,
@@ -31,8 +35,6 @@ import { TodaysGoalComponent } from './todays-goal/todays-goal.component';
                   NavComponent,
                   PlateComponent,
                   RegisterComponent,
-                  FarmersMarketsComponent,
-                  ExercisesComponent,
                   TodaysGoalComponent
                   ],
   imports: [
