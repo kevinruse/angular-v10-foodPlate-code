@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import {Food} from '../models/Food';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,10 +11,8 @@ export class FoodService {
   private foodUrl: string = 'http://localhost:3004/foodItems';
   foodRequest = new HttpRequest('GET', this.foodUrl, {reportProgress: true});
 
-  constructor(private http: HttpClient) { }
-
-  loadFood() {
-    return this.http.get(this.foodUrl);
+  constructor(private http: HttpClient) {
+    this.getAllFoods();
   }
 
   getFoodsProgress(): void {
@@ -27,5 +27,8 @@ export class FoodService {
     });
   }
 
+  getAllFoods<T>(): Observable<T> {
+    return this.http.get<T>(this.foodUrl);
+  }
 
 }

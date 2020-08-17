@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Food } from '../models/food';
 import { FoodService } from '../services/food.service';
 
 @Component({
@@ -7,13 +8,37 @@ import { FoodService } from '../services/food.service';
   styleUrls: ['./food.component.css']
 })
 export class FoodComponent implements OnInit {
+  isLoading: boolean = true;
+  errorMessage: string;
+  foodList: Food[];
+
 
   constructor(private foodService: FoodService) { }
 
   ngOnInit(): void {
-    console.log(this.foodService.getFoodsProgress());
+    this.getFood();
+    // console.log(this.foodService.getFoodsProgress());
     /*this.foodService.loadFood()
         .subscribe(data => console.log(data));*/
   }
+
+  getFood(): void {
+    this.foodService.getAllFoods<Food[]>()
+        .subscribe(
+            (food) => {
+              this.foodList = food;
+            },
+            (error) => {
+              this.errorMessage = error.message;
+              this.handleError(this.errorMessage);
+            },
+            () => this.isLoading = false
+        );
+  }
+
+  handleError(err): void {
+    console.log(err);
+  }
+
 
 }
