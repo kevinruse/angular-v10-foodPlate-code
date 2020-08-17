@@ -11,9 +11,9 @@ export class FoodComponent implements OnInit {
   constructor(private foodService: FoodService) { }
 
   ngOnInit(): void {
-    console.log(this.foodService.loadFood());
-    this.foodService.loadFood()
-        .subscribe(data => console.log(data));
+    console.log(this.foodService.getFoodsProgress());
+    /*this.foodService.loadFood()
+        .subscribe(data => console.log(data));*/
   }
 
 }
