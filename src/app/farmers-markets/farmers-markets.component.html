@@ -1,1 +1,21 @@
-<p>farmers-markets works!</p>
+<section class="loadingMessage detailsForm" *ngIf="isloading && !errorMessage">
+    WAIT!! Farmers Markets Data is Loading...
+</section>
+
+<section *ngIf="!errorMessage" class="detailsForm">
+    <select name="markets" id="markets" size="10" class="selectList">
+        <option *ngFor="let market of markets" (click)="showDetails(market)">{{ market.MarketName }}</option>
+    </select>
+</section>
+
+<section *ngIf="errorMessage" class="message detailsForm">
+    {{ errorMessage }}
+</section>
+
+<section class="detailsForm">
+    <label for="street">Street: <input type="text" id="street" #streetInput></label>
+    <label for="city">City: <input type="text" id="city" #cityInput></label>
+    <label for="state">State: <input type="text" id="state" #stateInput></label>
+    <label for="zip">Zip: <input type="text" id="zip" #zipInput></label>
+    <label for="cc">Credit Cards<input type="checkbox" id="cc" #ccInput>Yes</label>
+</section>
