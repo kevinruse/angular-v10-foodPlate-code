@@ -27,8 +27,8 @@ export class FoodService {
     });
   }
 
-  getAllFoods<T>(): Observable<T> {
-    return this.http.get<T>(this.foodUrl);
+  getAllFoods<Food>(): Observable<Food> {
+    return this.http.get<Food>(this.foodUrl);
   }
 
 }

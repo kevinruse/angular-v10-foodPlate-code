@@ -11,15 +11,25 @@ export class FoodComponent implements OnInit {
   isLoading: boolean = true;
   errorMessage: string;
   foodList: Food[];
-
+  foodGroups: Set<string> = new Set();
+  foodListByGroup: Food[] = this.foodList;
 
   constructor(private foodService: FoodService) { }
 
   ngOnInit(): void {
     this.getFood();
+    this.displayFoods('allFoods');
     // console.log(this.foodService.getFoodsProgress());
     /*this.foodService.loadFood()
         .subscribe(data => console.log(data));*/
+  }
+
+  getFoodGroups(food): void {
+    food.forEach(food => {
+      const group = food.group;
+      this.foodGroups.add(group);
+    });
+    console.log(this.foodGroups);
   }
 
   getFood(): void {
@@ -27,6 +37,8 @@ export class FoodComponent implements OnInit {
         .subscribe(
             (food) => {
               this.foodList = food;
+              this.getFoodGroups(this.foodList);
+              this.displayFoods('allFoods');
             },
             (error) => {
               this.errorMessage = error.message;
@@ -34,6 +46,20 @@ export class FoodComponent implements OnInit {
             },
             () => this.isLoading = false
         );
+  }
+
+  displayFoods(group): void {
+    if (group === 'allFoods') {
+      this.foodListByGroup = this.foodList;
+    } else if(group !== 'allFoods') {
+      this.foodListByGroup = this.foodList.filter((foods)=> {
+        return foods.group === group;
+      });
+    }
+  }
+
+  showNutrients(food): void {
+    console.log(food.nutrients);
   }
 
   handleError(err): void {
