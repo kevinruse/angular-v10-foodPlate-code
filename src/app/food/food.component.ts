@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Food } from '../models/food';
 import { FoodService } from '../services/food.service';
+
 
 @Component({
   selector: 'fp-food',
@@ -13,8 +14,17 @@ export class FoodComponent implements OnInit {
   foodList: Food[];
   foodGroups: Set<string> = new Set();
   foodListByGroup: Food[] = this.foodList;
+  foodItem: Food;
+  protein;
+  selectedIndex: number;
 
-  constructor(private foodService: FoodService) { }
+  @ViewChild('foodDetailContainer', {read: ViewContainerRef}) foodDetailContainer: ViewContainerRef;
+
+
+  constructor(private foodService: FoodService,
+              private cfr: ComponentFactoryResolver,
+              private injector: Injector) {
+  }
 
   ngOnInit(): void {
     this.getFood();
@@ -22,6 +32,10 @@ export class FoodComponent implements OnInit {
     // console.log(this.foodService.getFoodsProgress());
     /*this.foodService.loadFood()
         .subscribe(data => console.log(data));*/
+  }
+
+  select(index: number): void {
+    this.selectedIndex = index;
   }
 
   getFoodGroups(food): void {
@@ -51,15 +65,29 @@ export class FoodComponent implements OnInit {
   displayFoods(group): void {
     if (group === 'allFoods') {
       this.foodListByGroup = this.foodList;
-    } else if(group !== 'allFoods') {
-      this.foodListByGroup = this.foodList.filter((foods)=> {
+    } else if (group !== 'allFoods') {
+      this.foodListByGroup = this.foodList.filter((foods) => {
         return foods.group === group;
       });
     }
   }
 
-  showNutrients(food): void {
+  async showNutrients(food, index): Promise<any> {
+    this.select(index);
+    this.protein = food.nutrients[0].value;
     console.log(food.nutrients);
+    console.log(this.protein + food.nutrients[0].units);
+    this.foodItem = food;
+    console.log(this.foodItem);
+    this.foodDetailContainer.detach();
+    await this.lazyLoadNutritionDetail();
+  }
+
+  private async lazyLoadNutritionDetail(): Promise<any> {
+    const { NutritionDetailsComponent } = await import('../nutrition-details/nutrition-details.component');
+    const nutritionDetailFactory = this.cfr.resolveComponentFactory(NutritionDetailsComponent);
+    const { instance } = this.foodDetailContainer.createComponent(nutritionDetailFactory, null, this.injector);
+    instance.foodItem = this.foodItem;
   }
 
   handleError(err): void {

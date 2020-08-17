@@ -1,3 +1,4 @@
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +21,7 @@ import { FarmersMarketsComponent } from './farmers-markets/farmers-markets.compo
 import { ExercisesComponent } from './exercises/exercises.component';
 import { TodaysGoalComponent } from './todays-goal/todays-goal.component';
 import { FoodComponent } from './food/food.component';
+import { NutritionDetailsComponent } from './nutrition-details/nutrition-details.component';
 
 @NgModule({
   declarations: [ AppComponent,
@@ -35,7 +37,8 @@ import { FoodComponent } from './food/food.component';
                   NavComponent,
                   PlateComponent,
                   RegisterComponent,
-                  TodaysGoalComponent
+                  TodaysGoalComponent,
+                  NutritionDetailsComponent
                   ],
   imports: [
       AppRoutingModule,
@@ -44,7 +47,8 @@ import { FoodComponent } from './food/food.component';
       FoodGroupsModule,
       FormsModule,
       HttpClientModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      ScrollingModule
   ],
   bootstrap: [ AppComponent ]
 })

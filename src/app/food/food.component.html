@@ -8,14 +8,24 @@
         <option *ngFor="let group of foodGroups" value="{{group}}">{{group}}</option>
     </select>
 
-    <select name="foods" id="foods" size="10" class="selectList">
+<!--<select name="foods" id="foods" size="10" class="selectList">
         <option *ngFor="let item of foodListByGroup" (click)="showNutrients(item)">
             {{item.description}}
         </option>
-
     </select>
-</section>
+</section>-->
+
+    <ul class="list">
+        <cdk-virtual-scroll-viewport style="height: 180px" itemSize="15" >
+            <ng-container *cdkVirtualFor="let item of foodListByGroup; index as i">
+                <li (click)="showNutrients(item, i)" [ngClass]="{'active': selectedIndex === i}"> {{item.description}} </li>
+            </ng-container>
+        </cdk-virtual-scroll-viewport>
+    </ul>
+
 
 <section class="errMessage" *ngIf="errorMessage">
     {{errorMessage}}
 </section>
+
+<ng-container #foodDetailContainer></ng-container>
