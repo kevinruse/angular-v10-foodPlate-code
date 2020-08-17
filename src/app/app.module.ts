@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -40,6 +41,7 @@ import { TodaysGoalComponent } from './todays-goal/todays-goal.component';
       CommonModule,
       FoodGroupsModule,
       FormsModule,
+      HttpClientModule,
       ReactiveFormsModule
   ],
   bootstrap: [ AppComponent ]
