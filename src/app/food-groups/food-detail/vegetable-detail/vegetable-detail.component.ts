@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VegetableDetailComponent implements OnInit {
 
+  vegetableSample = {
+    'ounces': 22
+  };
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
