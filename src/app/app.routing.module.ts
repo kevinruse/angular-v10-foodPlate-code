@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { CanActivate, Route, RouterModule, Routes } from '@angular/router';
 
 import {DefaultComponent} from './components/default/default.component';
 import { ExercisesComponent } from './exercises/exercises.component';
@@ -8,6 +8,15 @@ import { foodGroupsRoutes } from './food-groups/food-groups.routing';
 import { FoodComponent } from './food/food.component';
 import {PlateComponent} from './plate/plate.component';
 import {RegisterComponent} from './register/register.component';
+import { RegisterGuardService } from './services/register-guard.service';
+
+class AllowFullAccessGuard implements CanActivate {
+    canActivate(): boolean {
+        console.log('FullAccessGuard has been activated.');
+        return true;
+    }
+}
+
 
 const fallbackRoute: Route = {
     path: '**',
@@ -18,7 +27,7 @@ const routes: Routes = [
     {
         path: '',
         children: [
-            { path: 'myPlate', component: PlateComponent},
+            { path: 'myPlate', component: PlateComponent, canActivate: [ RegisterGuardService ] },
             { path: 'register', component: RegisterComponent },
             { path: 'farmersMarkets', component: FarmersMarketsComponent },
             { path: 'exercises', component: ExercisesComponent },
@@ -29,8 +38,6 @@ const routes: Routes = [
     }
 ];
 
-
-
 @NgModule({
     imports: [
         RouterModule.forRoot(
@@ -38,7 +45,9 @@ const routes: Routes = [
     ],
     exports: [
         RouterModule
-    ]
+    ],
+    providers: [AllowFullAccessGuard,
+                RegisterGuardService]
 })
 
 export class AppRoutingModule { }
