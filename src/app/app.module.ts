@@ -44,7 +44,6 @@ import { NutritionDetailsComponent } from './nutrition-details/nutrition-details
       AppRoutingModule,
       BrowserModule,
       CommonModule,
-      FoodGroupsModule,
       FormsModule,
       HttpClientModule,
       ReactiveFormsModule,

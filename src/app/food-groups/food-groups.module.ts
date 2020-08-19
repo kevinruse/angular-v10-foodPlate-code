@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FoodDetailModule } from './food-detail/food-detail.module';
 
 import { FoodGroupsComponent } from './food-groups.component';
+import { FoodGroupsRoutingModule } from './food-groups.routing';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { FoodGroupsComponent } from './food-groups.component';
   ],
   imports: [
     CommonModule,
-    FoodDetailModule
+    FoodDetailModule,
+    FoodGroupsRoutingModule
   ]
 })
 export class FoodGroupsModule { }

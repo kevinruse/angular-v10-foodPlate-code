@@ -1,14 +1,17 @@
-import { FoodGroupsGuardService } from '../services/food-groups-guard.service';
-import {ProteinDetailComponent} from './food-detail/protein-detail/protein-detail.component';
-import {VegetableDetailComponent} from './food-detail/vegetable-detail/vegetable-detail.component';
-import {FruitDetailComponent} from './food-detail/fruit-detail/fruit-detail.component';
-import {GrainsDetailComponent} from './food-detail/grains-detail/grains-detail.component';
-import { FoodGroupsComponent } from './food-groups.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes} from '@angular/router';
 
-export const foodGroupsRoutes = [
+import {FoodGroupsGuardService} from '../services/food-groups-guard.service';
+import { FruitDetailComponent } from './food-detail/fruit-detail/fruit-detail.component';
+import { GrainsDetailComponent } from './food-detail/grains-detail/grains-detail.component';
+import { ProteinDetailComponent } from './food-detail/protein-detail/protein-detail.component';
+import { VegetableDetailComponent } from './food-detail/vegetable-detail/vegetable-detail.component';
+import {FoodGroupsComponent} from './food-groups.component';
+
+export const foodGroupsRoutes: Routes = [
     {
-        path: 'foodGroups',
-        canActivateChild: [ FoodGroupsGuardService],
+        path: '',
+        canActivateChild: [ FoodGroupsGuardService ],
         children: [
             {
                 path: '',
@@ -30,6 +33,19 @@ export const foodGroupsRoutes = [
             {
                 path: 'grains',
                 component: GrainsDetailComponent
-            },
+            }
         ]}
 ];
+
+@NgModule({
+    imports: [
+        RouterModule.forChild(
+            foodGroupsRoutes)
+    ],
+    exports: [
+        RouterModule
+    ],
+})
+
+export class FoodGroupsRoutingModule {
+}

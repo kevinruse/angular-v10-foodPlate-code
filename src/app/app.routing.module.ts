@@ -11,14 +11,6 @@ import {RegisterComponent} from './register/register.component';
 import { LeaveRegisterGuardService } from './services/leave-register-guard.service';
 import { RegisterGuardService } from './services/register-guard.service';
 
-class AllowFullAccessGuard implements CanActivate {
-    canActivate(): boolean {
-        console.log('FullAccessGuard has been activated.');
-        return true;
-    }
-}
-
-
 const fallbackRoute: Route = {
     path: '**',
     component: DefaultComponent
@@ -33,7 +25,10 @@ const routes: Routes = [
             { path: 'farmersMarkets', component: FarmersMarketsComponent },
             { path: 'exercises', component: ExercisesComponent },
             { path: 'nutritionInfo', component: FoodComponent },
-            ...foodGroupsRoutes,
+            { path: 'foodGroups',
+              loadChildren: () => import('./food-groups/food-groups.module')
+                  .then(mod => mod.FoodGroupsModule)
+            },
             fallbackRoute
         ]
     }
@@ -47,8 +42,7 @@ const routes: Routes = [
     exports: [
         RouterModule
     ],
-    providers: [AllowFullAccessGuard,
-                RegisterGuardService]
+    providers: [RegisterGuardService]
 })
 
 export class AppRoutingModule { }
