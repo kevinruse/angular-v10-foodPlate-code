@@ -1,3 +1,4 @@
+import { FoodGroupsGuardService } from '../services/food-groups-guard.service';
 import {ProteinDetailComponent} from './food-detail/protein-detail/protein-detail.component';
 import {VegetableDetailComponent} from './food-detail/vegetable-detail/vegetable-detail.component';
 import {FruitDetailComponent} from './food-detail/fruit-detail/fruit-detail.component';
@@ -7,6 +8,7 @@ import { FoodGroupsComponent } from './food-groups.component';
 export const foodGroupsRoutes = [
     {
         path: 'foodGroups',
+        canActivateChild: [ FoodGroupsGuardService],
         children: [
             {
                 path: '',

@@ -14,16 +14,17 @@ export class FoodGroupsComponent implements OnInit {
 
   constructor(private foodGroupsSvce: FoodGroupsService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.foodGroups = this.foodGroupsSvce.getFoodGroups();
   }
 
   showGroup(group): void {
-        console.log(group.name);
-        this.router.navigate([group.name], {relativeTo: this.route
+    this.router.navigate([group.name], {
+      relativeTo: this.route, queryParams: {group: `${group.name}`}
     });
   }
-
 }
+
