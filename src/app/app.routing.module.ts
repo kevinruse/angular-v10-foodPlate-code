@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CanActivate, Route, RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, Routes } from '@angular/router';
 
 import {DefaultComponent} from './components/default/default.component';
-import { ExercisesComponent } from './exercises/exercises.component';
 import { FarmersMarketsComponent } from './farmers-markets/farmers-markets.component';
-import { foodGroupsRoutes } from './food-groups/food-groups.routing';
 import { FoodComponent } from './food/food.component';
 import {PlateComponent} from './plate/plate.component';
 import {RegisterComponent} from './register/register.component';
@@ -23,12 +21,9 @@ const routes: Routes = [
             { path: 'myPlate', component: PlateComponent, canActivate: [ RegisterGuardService ] },
             { path: 'register', component: RegisterComponent, canDeactivate: [ LeaveRegisterGuardService] },
             { path: 'farmersMarkets', component: FarmersMarketsComponent },
-            { path: 'exercises', component: ExercisesComponent },
             { path: 'nutritionInfo', component: FoodComponent },
-            { path: 'foodGroups',
-              loadChildren: () => import('./food-groups/food-groups.module')
-                  .then(mod => mod.FoodGroupsModule)
-            },
+            {path: 'foodGroups', loadChildren: () => import('./food-groups/food-groups.module').then(m => m.FoodGroupsModule)},
+            {path: 'exercises', loadChildren: () => import('./exercises/exercises.module').then(m => m.ExercisesModule)},
             fallbackRoute
         ]
     }

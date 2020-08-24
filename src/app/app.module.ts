@@ -13,20 +13,24 @@ import { HeaderComponent } from './header/header.component';
 import { HomeBtnComponent } from './home-btn/home-btn.component';
 import { MainComponent } from './main/main.component';
 import { MessageComponent } from './message/message.component';
+import { testToken } from './models/test.token';
+import { ITest } from './models/TestInterface';
 import { PlateComponent } from './plate/plate.component';
 import { NavComponent } from './nav/nav.component';
 import { DefaultComponent } from './components/default/default.component';
 import { RegisterComponent } from './register/register.component';
 import { FarmersMarketsComponent } from './farmers-markets/farmers-markets.component';
-import { ExercisesComponent } from './exercises/exercises.component';
 import { TodaysGoalComponent } from './todays-goal/todays-goal.component';
 import { FoodComponent } from './food/food.component';
 import { NutritionDetailsComponent } from './nutrition-details/nutrition-details.component';
 
+export const testValue2: ITest = {
+    testString: 'AppModuleTestValue'
+};
+
 @NgModule({
   declarations: [ AppComponent,
                   DefaultComponent,
-                  ExercisesComponent,
                   FarmersMarketsComponent,
                   FoodComponent,
                   FooterComponent,
@@ -49,6 +53,9 @@ import { NutritionDetailsComponent } from './nutrition-details/nutrition-details
       ReactiveFormsModule,
       ScrollingModule
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  providers: [{
+      provide: testToken, useValue: testValue2
+  }]
 })
 export class AppModule { }
