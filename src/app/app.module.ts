@@ -23,6 +23,7 @@ import { FarmersMarketsComponent } from './farmers-markets/farmers-markets.compo
 import { TodaysGoalComponent } from './todays-goal/todays-goal.component';
 import { FoodComponent } from './food/food.component';
 import { NutritionDetailsComponent } from './nutrition-details/nutrition-details.component';
+import { GoalsComponent } from './goals/goals.component';
 
 export const testValue2: ITest = {
     testString: 'AppModuleTestValue'
@@ -42,7 +43,7 @@ export const testValue2: ITest = {
                   PlateComponent,
                   RegisterComponent,
                   TodaysGoalComponent,
-                  NutritionDetailsComponent
+                  GoalsComponent
                   ],
   imports: [
       AppRoutingModule,

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Food } from '../models/food';
 
 @Component({
   selector: 'fp-nutrition-details',
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NutritionDetailsComponent implements OnInit {
 
   @Input()
-  foodItem;
+  foodItem: Food;
 
   constructor() { }
 
