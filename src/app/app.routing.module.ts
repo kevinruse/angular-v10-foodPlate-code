@@ -4,6 +4,7 @@ import { Route, RouterModule, Routes } from '@angular/router';
 import {DefaultComponent} from './components/default/default.component';
 import { FarmersMarketsComponent } from './farmers-markets/farmers-markets.component';
 import { FoodComponent } from './food/food.component';
+import { GoalsComponent } from './goals/goals.component';
 import {PlateComponent} from './plate/plate.component';
 import {RegisterComponent} from './register/register.component';
 import { LeaveRegisterGuardService } from './services/leave-register-guard.service';
@@ -22,6 +23,7 @@ const routes: Routes = [
             { path: 'register', component: RegisterComponent, canDeactivate: [ LeaveRegisterGuardService] },
             { path: 'farmersMarkets', component: FarmersMarketsComponent },
             { path: 'nutritionInfo', component: FoodComponent },
+            { path: 'goals', component: GoalsComponent },
             {path: 'foodGroups', loadChildren: () => import('./food-groups/food-groups.module').then(m => m.FoodGroupsModule)},
             {path: 'exercises', loadChildren: () => import('./exercises/exercises.module').then(m => m.ExercisesModule)},
             fallbackRoute
