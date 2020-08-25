@@ -7,9 +7,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
-import { FoodGroupsModule } from './food-groups/food-groups.module';
 import { FooterComponent } from './footer/footer.component';
-import { GoalsComponent } from './goals/goals.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeBtnComponent } from './home-btn/home-btn.component';
 import { MainComponent } from './main/main.component';
@@ -45,7 +43,6 @@ export const testValue2: ITest = {
                   PlateComponent,
                   RegisterComponent,
                   TodaysGoalComponent,
-                  GoalsComponent
                   ],
   imports: [
       AppRoutingModule,
