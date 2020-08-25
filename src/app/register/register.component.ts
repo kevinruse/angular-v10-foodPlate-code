@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   currentUser: User;
   ageGroups = ['select your age group', '2-3', '4-8', '9-13', '14-18', '19-30', '31-50', '51+'];
   regForm: FormGroup;
+  submit: boolean;
 
 
   constructor(private userService: UserService,
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
       'email' : [null, Validators.compose([Validators.required, Validators.email])],
       'gender' : [null, [Validators.required]],
       'ageGroup' : [null, [Validators.required]]
-    }, {updateOn: 'blur'});
+    });
   }
 
 
@@ -34,9 +35,15 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(formValues): void {
+    this.submit = true;
     this.userService.updateUser(formValues);
     UserService.storeUserLocal(formValues);
+    this.router.navigate(['myPlate']);
   }
 
+  canDeactivate(): boolean {
+    console.log(!this.regForm.touched);
+    return !this.regForm.touched || this.submit;
+  }
 
 }

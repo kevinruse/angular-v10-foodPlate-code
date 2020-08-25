@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import {FoodGroupsService} from '../services/food-groups.service';
+import { TestService } from '../services/test.service';
 
 @Component({
   selector: 'fp-food-groups',
@@ -14,16 +15,20 @@ export class FoodGroupsComponent implements OnInit {
 
   constructor(private foodGroupsSvce: FoodGroupsService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private testService: TestService,
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    console.log('%cfrom foodGroups.component:', 'color: red');
+    console.log(this.testService.getValue());
     this.foodGroups = this.foodGroupsSvce.getFoodGroups();
   }
 
   showGroup(group): void {
-        console.log(group.name);
-        this.router.navigate([group.name], {relativeTo: this.route
+    this.router.navigate([group.name], {
+      relativeTo: this.route, queryParams: {group: `${group.name}`}
     });
   }
-
 }
+

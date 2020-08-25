@@ -25,7 +25,12 @@ export class UserService {
       const user = JSON.parse(localStorage.getItem('currentUser'));
       this.currentUser = new BehaviorSubject(user);
       return user;
-    } else {
+    }      else {
+      // remove after route-child-guard test
+      this.user.reqsStatus.fruitMet = true;
+      this.user.reqsStatus.proteinMet = true;
+      // user.reqsStatus.vegetablesMet = true;
+      // user.reqsStatus.grainsMet = true;
       return this.user;
     }
   }
@@ -33,7 +38,7 @@ export class UserService {
   updateUser(user: User): void {
     user.id = 1;
     user.registered = true;
-    user.reqsStatus = {fruitMet: false, vegMet: false, proteinMet: false, grainMet: false};
+    user.reqsStatus = {fruitMet: true, vegMet: false, proteinMet: true, grainMet: false};
     this.currentUser.next(user);
   }
 
