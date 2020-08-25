@@ -18,7 +18,8 @@ export class FoodComponent implements OnInit {
   protein;
   selectedIndex: number;
 
-  @ViewChild('foodDetailContainer', {read: ViewContainerRef}) foodDetailContainer: ViewContainerRef;
+  @ViewChild('foodDetailContainer', {read: ViewContainerRef})
+  foodDetailContainer: ViewContainerRef;
 
 
   constructor(private foodService: FoodService,
@@ -72,8 +73,7 @@ export class FoodComponent implements OnInit {
     }
   }
 
-  async showNutrients(food, index): Promise<any> {
-    this.select(index);
+  async showNutrients(food): Promise<any> {
     this.protein = food.nutrients[0].value;
     console.log(food.nutrients);
     console.log(this.protein + food.nutrients[0].units);
@@ -82,6 +82,7 @@ export class FoodComponent implements OnInit {
     this.foodDetailContainer.detach();
     await this.lazyLoadNutritionDetail();
   }
+
 
   private async lazyLoadNutritionDetail(): Promise<any> {
     const { NutritionDetailsComponent } = await import('../nutrition-details/nutrition-details.component');
