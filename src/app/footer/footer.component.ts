@@ -11,7 +11,7 @@ import { TodaysGoalService } from '../services/todays-goal.service';
 })
 export class FooterComponent implements OnInit, OnDestroy {
 
-  goal: any;
+  goal!: any;
   subscription: Subscription;
 
   versionString: string = '1.0.0';
